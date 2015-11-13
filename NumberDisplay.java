@@ -19,6 +19,11 @@ public class NumberDisplay
     {
        int valorDelDisplay = 0;
        min = valorDelDisplay;
-       max = limiteDelDisplay
+       max = limiteDelDisplay;
+    }
+    
+    public void setValue(int valorPasado)
+    {
+        min = valorPasado;
     }
 }
