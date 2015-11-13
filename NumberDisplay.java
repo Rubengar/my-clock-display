@@ -11,7 +11,7 @@ public class NumberDisplay
 
     private int max;
     
-    private int min;
+    private int num;
    
     
     /**
@@ -19,7 +19,7 @@ public class NumberDisplay
      */
     public NumberDisplay(int limiteDelDisplay)
     {
-       min = 0 ;
+       num = 0 ;
        max = limiteDelDisplay;
     }
     
@@ -28,24 +28,42 @@ public class NumberDisplay
      */
     public void setValue(int valorPasado)
     {
-        min = valorPasado;
+        num = valorPasado;
     }
     /**
-     * 
+     * devuelve el valor actual del display en forma de cadena de 2 caracteres
      */
     public String getDisplay()
     {
      String valor = "";
-        if (min < 10)
+        if (num < 10)
         {
-         valor = ""+"0"+ min ;
+         valor = ""+"0"+ num ;
          return valor;
         }
         else
         {
-          valor = " " + min ;
+          valor = " " + num ;
           return valor;
         }
      
+    }
+    public int getValue()
+    {
+        return num;
+    }
+    /**
+     * método que incrementa en 1 al display y lo hace volver al principio si alcanza el límite
+     */
+    public void increment()
+    {
+       if (num == (max - 1))
+            {
+                num = 0;
+            }
+            else
+            {
+                num = num + 1;
+            }
     }
 }
