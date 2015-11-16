@@ -84,8 +84,13 @@ public class ClockDisplay
     
     public void timeTick()
     {
-    
+       minutos.increment();
+       minutos.increment();
+ 
     }
 
-    
 }
+
+
+    
+
