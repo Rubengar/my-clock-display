@@ -7,11 +7,11 @@
  */
 public class ClockDisplay
 {
-    // instance variables - replace the example below with your own
+    // horas del reloj
     private NumberDisplay horas;
-    
+    // minutos del reloj
     private NumberDisplay minutos;
-    
+    //pantalla del reloj
     private String pantalla;
 
     /**
@@ -49,6 +49,9 @@ public class ClockDisplay
             }
        
     }
+    /**
+     * Metodo que te permite cambiar la hora
+     */
     public void setTime(int valorHoras, int valorMinutos)
     {
         int horas = valorHoras;
@@ -70,6 +73,18 @@ public class ClockDisplay
                 pantalla =  horas + ":" + minutos;
             }
        
+    }
+    /**
+     *Metodo que te muestra la hora
+     */
+    public String getTime()
+    {
+        return pantalla;
+    }
+    
+    public void timeTick()
+    {
+    
     }
 
     
