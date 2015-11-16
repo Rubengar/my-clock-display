@@ -23,12 +23,53 @@ public class ClockDisplay
        int minutos = 00;
        pantalla = "0"+ horas + ":0" + minutos;
     }
+    /**
+     * permite fijar la hora y los minutos
+     */
+    
     public ClockDisplay(int valorHoras, int valorMinutos)
     {
         int horas = valorHoras;
         int minutos = valorMinutos;
+            if(valorHoras < 10 && valorMinutos > 9)
+            {
+                pantalla ="0"+ horas + ":" + minutos;
+            }
+                else if (valorHoras > 10 && valorMinutos < 10)
+                {
+                    pantalla = horas + ":0" + minutos;
+                }
+                else if (valorHoras < 10 && valorMinutos < 10)
+                {
+                pantalla = "0"+ horas + ":0" + minutos;
+                }
+            else
+            {
+                pantalla =  horas + ":" + minutos;
+            }
        
-        
+    }
+    public void setTime(int valorHoras, int valorMinutos)
+    {
+        int horas = valorHoras;
+        int minutos = valorMinutos;
+            if(valorHoras < 10 && valorMinutos > 9)
+            {
+                pantalla ="0"+ horas + ":" + minutos;
+            }
+                else if (valorHoras > 10 && valorMinutos < 10)
+                {
+                    pantalla = horas + ":0" + minutos;
+                }
+                else if (valorHoras < 10 && valorMinutos < 10)
+                {
+                pantalla = "0"+ horas + ":0" + minutos;
+                }
+            else
+            {
+                pantalla =  horas + ":" + minutos;
+            }
+       
     }
 
     
