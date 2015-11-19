@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class ClockDisplay here.
  * 
@@ -7,89 +6,103 @@
  */
 public class ClockDisplay
 {
-    // horas del reloj
+    // Guarda la hora
     private NumberDisplay horas;
-    // minutos del reloj
+    // Guarda los minutos
     private NumberDisplay minutos;
-    //pantalla del reloj
-    private String pantalla;
+    // Almacena la hora actual con 5 caracteres
+    private String horaActual;
+    
+    private boolean tiempo;
 
     /**
-     * Constructor for objects of class ClockDisplay
+     * Crea un objeto ClockDisplay con hora por defecto 00:00
      */
     public ClockDisplay()
-    {   
-       int horas = 00;
-       int minutos = 00;
-       pantalla = "0"+ horas + ":0" + minutos;
-    }
-    /**
-     * permite fijar la hora y los minutos
-     */
-    
-    public ClockDisplay(int valorHoras, int valorMinutos)
     {
-        int horas = valorHoras;
-        int minutos = valorMinutos;
-            if(valorHoras < 10 && valorMinutos > 9)
-            {
-                pantalla ="0"+ horas + ":" + minutos;
-            }
-                else if (valorHoras > 10 && valorMinutos < 10)
-                {
-                    pantalla = horas + ":0" + minutos;
-                }
-                else if (valorHoras < 10 && valorMinutos < 10)
-                {
-                pantalla = "0"+ horas + ":0" + minutos;
-                }
-            else
-            {
-                pantalla =  horas + ":" + minutos;
-            }
-       
-    }
-    /**
-     * Metodo que te permite cambiar la hora
-     */
-    public void setTime(int valorHoras, int valorMinutos)
-    {
-        int horas = valorHoras;
-        int minutos = valorMinutos;
-            if(valorHoras < 10 && valorMinutos > 9)
-            {
-                pantalla ="0"+ horas + ":" + minutos;
-            }
-                else if (valorHoras > 10 && valorMinutos < 10)
-                {
-                    pantalla = horas + ":0" + minutos;
-                }
-                else if (valorHoras < 10 && valorMinutos < 10)
-                {
-                pantalla = "0"+ horas + ":0" + minutos;
-                }
-            else
-            {
-                pantalla =  horas + ":" + minutos;
-            }
-       
-    }
-    /**
-     *Metodo que te muestra la hora
-     */
-    public String getTime()
-    {
-        return pantalla;
+        horas = new NumberDisplay(24);
+        minutos = new NumberDisplay(60);
+        horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }
     
+    /** 
+     * Crea un objeto ClockDisplay con la hora y los minutos dados
+     */
+    public ClockDisplay (int horasX, int minutosX)
+    {
+        horas =   new NumberDisplay(24);
+        minutos = new NumberDisplay(60);    
+        horas.setValue(horasX); 
+        minutos.setValue(minutosX);
+        horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue();     
+    }
+    
+    /**
+     * Fija la hora del reloj a la hora y los minutos dados
+     */
+    public void setTime(int horaY, int minutoY)
+    {
+        horas.setValue(horaY);  
+        minutos.setValue(minutoY);
+        horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue() ;
+    }
+    
+    /**
+     * Devuelve la hora del reloj como un   a cadena de 5 caracteres
+     */
+     public String getTime()
+     {
+         return horaActual;
+     }
+     
+    /**
+     * Hace avanzar la hora 1 minuto
+     */
     public void timeTick()
     {
-       minutos.increment();
-       minutos.increment();
- 
+        minutos.increment();
+        if ( minutos.getValue() == 0) {
+            horas.increment();
+        }
+        if (tiempo == true)
+        {
+             horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue()+ "a.m";
+             if (horas.getValue() == 12 )
+             {
+                 horas.setValue(1);
+                 horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue()+ "p.m";
+             }
+        }
+        else
+        {
+             horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue()+ "p.m";
+             if (horas.getValue() == 12)
+             {
+                 horas.setValue(1);
+                 horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue()+ "a.m";
+             }
+        }
     }
-
+    public void cambiarFormato(boolean mañanaOTarde,int horasX, int minutosX)
+    {
+        tiempo = mañanaOTarde;
+        horas =  new NumberDisplay(13);
+        minutos = new NumberDisplay(60);
+        horas.setValue(horasX);
+        minutos.setValue(minutosX);
+        if (tiempo == true)
+        {
+            horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue()+ "a.m";     
+        }
+        else
+        {
+            horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue()+ "p.m";
+        }
+    }
 }
+
+
+
 
 
     

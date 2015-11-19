@@ -33,7 +33,7 @@ public class NumberDisplay
     /**
      * devuelve el valor actual del display en forma de cadena de 2 caracteres
      */
-    public String getDisplay()
+    public String getDisplayValue()
     {
      String valor = "";
         if (num < 10)
@@ -57,7 +57,7 @@ public class NumberDisplay
      */
     public void increment()
     {
-       if (num == (max - 1))
+        if (num == (max - 1))
             {
                 num = 0;
             }
