@@ -33,7 +33,7 @@ public class ClockDisplay
     {
         horas = new NumberDisplay(24);
         minutos = new NumberDisplay(60);
-        anno = 2015;
+        anno = 15;
         dia = 20;
         mes = 11;
         relojDe12Horas = reloj12Horas;
@@ -51,7 +51,7 @@ public class ClockDisplay
     {
         horas =   new NumberDisplay(24);
         minutos = new NumberDisplay(60);	
-           if ((valorDia <= 31) && (valorMes <= 12 ))
+           if ((valorDia <= 31) && (valorMes <= 12 )&& (valorAnno > 99))
            {
             anno = valorAnno;
             dia = valorDia;
@@ -93,18 +93,27 @@ public class ClockDisplay
         minutos.increment();
         if ( minutos.getValue() == 0) {
             horas.increment();
-            dia++;
+            if (horas.getValue() == 0)
+            {
+                dia++;
                 if (dia == 32)
                 {
                     mes++;
                     dia = 1;
-                        if (mes == 13)
-                        {
-                            mes = 1;
-                            dia = 1;
-                            anno++;
-                        }
-                }
+                    if (mes == 13)
+                    {
+                      mes = 1;
+                      dia = 1;
+                      anno++;
+                      if (anno == 100)
+                      {
+                        mes = 1;
+                        dia = 1;
+                        anno = 0;
+                       }
+                    }
+               }
+            }
         }
         updateHoraActual();
     }
